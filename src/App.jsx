@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Outlet, Link} from "react-router-dom";
 import "./style.css";
 
 export default function App() {
@@ -13,6 +13,7 @@ export default function App() {
       <Link to="/invoices">Invoices</Link> | {" "}
       <Link to="/expenses">Expenses</Link>
       </nav>
+      <Outlet />
     </div>
   );
 }

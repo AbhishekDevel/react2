@@ -4,6 +4,7 @@ import { getInvoices } from '../data';
 export default function Invoices() {
   let invoices = getInvoices();
   let [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
 
   return (
     <div style={{ display: 'flex' }}>
@@ -27,7 +28,7 @@ export default function Invoices() {
         {invoices
           .filter((invoice) => {
             let filter = searchParams.get('filter');
-            if (!filter) return true;
+            if (!filter) return true; {/* The filter(Boolean) trick */}
             let name = invoice.name.toLowerCase();
             return name.startsWith(filter.toLowerCase());
           })

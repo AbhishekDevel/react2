@@ -1,9 +1,10 @@
 import React from 'react';
-import { NavLink, Outlet, useSearchParams } from 'react-router-dom';
+import { NavLink, Outlet, useSearchParams,useLocation } from 'react-router-dom';
 import { getInvoices } from '../data';
 export default function Invoices() {
   let invoices = getInvoices();
   let [searchParams, setSearchParams] = useSearchParams();
+  let location = useLocation();
   console.log(searchParams);
 
   return (
@@ -41,7 +42,7 @@ export default function Invoices() {
                   color: isActive ? 'red' : 'blue',
                 };
               }}
-              to={`/invoices/${invoice.number}`}
+              to={`/invoices/${invoice.number}${location.search}`}
               key={invoice.number}
             >
               {invoice.name}
